@@ -1,0 +1,15 @@
+---
+default: -p headless -p qa -p html -p json -p env_qa -p screen -p pretty
+ci: -p headless -p qa -p html -p json -p env_qa -p screen -p pretty
+
+pretty: -f pretty
+progress: -f progress
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+headless: BROWSER=headless
+html: -f html -o log/report.html
+json: -f json -o log/report.json
+screen: screenshot=true
+qa: ENV_TYPE=qa
+env_qa: ENV_PREFIX=QA
+  

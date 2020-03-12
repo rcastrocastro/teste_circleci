@@ -1,0 +1,18 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: raphaelcastro35/ruby_gems_fleury:0.2.0
+    parallelism: 4
+    steps:
+      - checkout
+      - run: 
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+      - run: 
+          name: Execute all features scenarios
+          command: bundle exec cucumber 
+      - store_test_results:
+          path: log/report.html
+      - store_artifacts:
+          path: log/report.html
