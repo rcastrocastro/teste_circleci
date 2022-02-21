@@ -1,14 +1,19 @@
 version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0
+
 jobs:
   build:
     docker:
-      - image: raphaelcastro35/ruby_gems_fleury:0.2.0
+      - image: cimg/ruby:2.7
     parallelism: 4
     steps:
       - checkout
       - run: 
           name: Bundle install
           command: bundle install --path vendor/bundle
+      - ruby/install-deps
       - run: 
           name: Execute all features scenarios
           command: bundle exec cucumber 
